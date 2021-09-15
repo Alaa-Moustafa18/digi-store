@@ -1,0 +1,30 @@
+<mat-toolbar>
+  <mat-toolbar-row>
+    <span><a routerLink="/home">Store</a></span>
+    <span class="example-spacer"></span>
+    <a class="menu-item" routerLink="/register" routerLinkActive="active">{{
+      "REGISTER" | translate
+    }}</a>
+    <p>
+      <mat-icon [matBadge]="total" matBadgeColor="warn">shopping_bag</mat-icon>
+    </p>
+    <button
+      mat-icon-button
+      [matMenuTriggerFor]="menu"
+      aria-label="Example icon-button with a menu"
+    >
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="switchTheme()">
+        <span> {{ "SWITCH_MODE" | translate }} </span>
+      </button>
+      <button mat-menu-item (click)="changeLanguage('ar')">
+        <span> {{ "ARABIC" | translate }} </span>
+      </button>
+      <button mat-menu-item (click)="changeLanguage('en')">
+        <span> {{ "ENGLISH" | translate }} </span>
+      </button>
+    </mat-menu>
+  </mat-toolbar-row>
+</mat-toolbar>

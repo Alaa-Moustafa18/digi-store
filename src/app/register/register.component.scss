@@ -1,0 +1,16 @@
+.main-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .form-card {
+    width: 35rem;
+    padding: 3rem;
+  }
+  .mat-form-field {
+    width: 100%;
+  }
+  .mat-raised-button {
+    padding: 7px 40px;
+    font-size: 17px;
+  }
+}

@@ -1,1 +1,135 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '~@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$store-primary: mat.define-palette(mat.$teal-palette);
+$store-accent: mat.define-palette(mat.$teal-palette, 800, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$store-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$store-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $store-primary,
+      accent: $store-accent,
+      warn: $store-warn,
+    ),
+  )
+);
+
+$store-theme-dark: mat.define-dark-theme(
+  (
+    color: (
+      primary: $store-primary,
+      accent: $store-accent,
+      warn: $store-warn,
+    ),
+  )
+);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($store-theme);
+
 /* You can add global styles to this file, and also import other style files */
+.theme-light {
+  @include mat.all-component-themes($store-theme);
+  background: #f4f7f6;
+  a:not(.menu-item) {
+    color: #00695c;
+  }
+  a.menu-item {
+    color: #000;
+  }
+}
+.theme-dark {
+  @include mat.all-component-themes($store-theme-dark);
+  background: #000;
+  a:not(.menu-item) {
+    color: #fff;
+    &:hover {
+      color: #00695c;
+    }
+  }
+  a.menu-item {
+    color: #fff;
+  }
+}
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: "Raleway", sans-serif !important;
+  box-sizing: border-box;
+}
+
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  .col {
+    position: relative;
+    flex: 30%;
+    max-width: 30%;
+    padding-left: 35px;
+    padding-bottom: 35px;
+    // @media all and (min-width: 768) and (max-width: 992px) {
+    //   .col-md-3 {
+    //     flex: 50%;
+    //     max-width: 50%;
+    //   }
+    // }
+    // @media all and (min-width: 480) and (max-width: 767px) {
+    //   .col-md-3 {
+    //     flex: 100%;
+    //     max-width: 100%;
+    //   }
+    // }
+  }
+}
+
+.flex-justify-center {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mat-card {
+  font-family: "Raleway", sans-serif !important;
+}
+a:not(.menu-item) {
+  display: inline-block;
+  text-decoration: none;
+
+  font-weight: 600;
+  text-transform: capitalize;
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    opacity: 0.8;
+  }
+}

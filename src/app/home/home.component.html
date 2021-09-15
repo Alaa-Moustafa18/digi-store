@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <div class="col" *ngFor="let product of products; let i = index">
+      <mat-card class="example-card">
+        <div class="product-img" (click)="openDialog(i)">
+          <img
+            src="../../assets/images/{{ product.category }}.jpg"
+            [alt]="product.name"
+          />
+          <div class="overlay">
+            <mat-icon aria-hidden="false" aria-label="Example home icon"
+              >add_shopping_cart</mat-icon
+            >
+          </div>
+        </div>
+        <mat-card-content>
+          <div class="row flex flex-justify-center">
+            <p class="product-name">
+              {{ product.name }}
+
+              <span class="product-price">{{ product.price | currency }}</span>
+            </p>
+          </div>
+          <div class="row flex flex-justify-center">
+            <p>
+              <a routerLink="/category/{{ product.category }}">{{
+                product.category
+              }}</a>
+            </p>
+
+            <span
+              *ngIf="
+                order?.itemIndex == i && order?.quantity == product?.quantity
+              "
+              class="sold"
+              >{{ "SOLDOUT" | translate }}</span
+            >
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

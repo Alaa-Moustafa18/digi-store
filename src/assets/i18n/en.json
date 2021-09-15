@@ -1,0 +1,30 @@
+{
+  "ARABIC": "Arabic",
+  "ENGLISH": "English",
+  "SWITCH_MODE": "Switch mode",
+  "LOGOUT": "Log out",
+  "NAME": "Name",
+  "ADDRESS": "Address",
+  "MEMBERSHIP": "Membership",
+  "REGISTER": "Register",
+  "ADD_TO_CART": "Add to cart",
+  "COUNT": "Count",
+  "DELIEVER_ADDRESS": "Deliver to the address attached to your account?",
+  "YES": "Yes",
+  "NO": "No",
+  "NEW_ADSREES": "new address",
+  "ORIGINAL_PRICE": "Your original price is",
+  "DEDUCTION": "Your membership has saved you",
+  "FINAL_PRICE": "Your final price is",
+  "SUBMIT": "Submit",
+  "CANCEL": "Cancel",
+  "SOLDOUT": "Soldout",
+  "NEW_ITEM_ADDED": "New item added",
+  "REGISTERD_SUCCESSFULLY": "You have successfully registered",
+  "ERROR_MSGS": {
+    "REQUIRED": "This field is required",
+    "MIN_LENGTH": "Please enter at least {{number}} letters",
+    "MIN": "Minimum count is  {{number}}",
+    "MAX": "Maximum count is {{number}}"
+  }
+}
