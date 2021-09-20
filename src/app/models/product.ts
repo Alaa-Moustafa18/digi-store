@@ -1,6 +1,8 @@
 export class Product {
-  'name': string;
-  'price': number;
+  'id': number;
+  'title': string;
+  'price': string;
   'category': string;
-  'quantity': number;
+  'image': string;
+  'description'?: string;
 }

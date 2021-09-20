@@ -1,24 +1,22 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from './core/guards/auth.guard';
-import { HomeComponent } from './home/home.component';
-import { RegisterComponent } from './register/register.component';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', component: RegisterComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
-
   {
-    path: 'category/:name',
-    component: HomeComponent,
-    data: { categoryPage: true },
+    path: 'products',
+    loadChildren: () =>
+      import('../app/modules/products/products-routing.module').then(
+        (m) => m.ProductsRoutingModule
+      ),
   },
-  { path: '**', component: RegisterComponent },
+
+  // { path: '**', redirectTo: '/home', pathMatch: 'full' },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
+  ],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

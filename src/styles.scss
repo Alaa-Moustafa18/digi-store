@@ -11,8 +11,8 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$store-primary: mat.define-palette(mat.$teal-palette);
-$store-accent: mat.define-palette(mat.$teal-palette, 800, A100, A400);
+$store-primary: mat.define-palette(mat.$indigo-palette);
+$store-accent: mat.define-palette(mat.$indigo-palette, 800, A100, A400);
 
 // The warn palette is optional (defaults to red).
 $store-warn: mat.define-palette(mat.$red-palette);
@@ -49,7 +49,7 @@ $store-theme-dark: mat.define-dark-theme(
   @include mat.all-component-themes($store-theme);
   background: #f4f7f6;
   a:not(.menu-item) {
-    color: #00695c;
+    color: #e53935;
   }
   a.menu-item {
     color: #000;
@@ -61,7 +61,7 @@ $store-theme-dark: mat.define-dark-theme(
   a:not(.menu-item) {
     color: #fff;
     &:hover {
-      color: #00695c;
+      color: #e53935;
     }
   }
   a.menu-item {
@@ -88,33 +88,20 @@ body {
 .row {
   display: flex;
   flex-wrap: wrap;
-  .col {
-    position: relative;
-    flex: 30%;
-    max-width: 30%;
-    padding-left: 35px;
-    padding-bottom: 35px;
-    // @media all and (min-width: 768) and (max-width: 992px) {
-    //   .col-md-3 {
-    //     flex: 50%;
-    //     max-width: 50%;
-    //   }
-    // }
-    // @media all and (min-width: 480) and (max-width: 767px) {
-    //   .col-md-3 {
-    //     flex: 100%;
-    //     max-width: 100%;
-    //   }
-    // }
-  }
+  flex-direction: row;
 }
 
-.flex-justify-center {
+.flex-justify-between {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 .flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.flex-justify-center {
   display: flex;
   justify-content: center;
   align-items: center;

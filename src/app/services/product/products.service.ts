@@ -8,39 +8,24 @@ import { Product } from '../../models/product';
 })
 export class ProductsService {
   totalItemsObservable: Subject<number> = new Subject<number>();
-  products: Product[] = [
-    {
-      name: 'laptop',
-      price: 20,
-      category: 'Electronics',
-      quantity: 5,
-    },
-    {
-      name: 'laptop',
-      price: 20,
-      category: 'home',
-      quantity: 20,
-    },
-    {
-      name: 'laptop',
-      price: 20,
-      category: 'toys',
-      quantity: 20,
-    },
-    {
-      name: 'laptop',
-      price: 20,
-      category: 'Electronics',
-      quantity: 20,
-    },
-  ];
+
   constructor(private http: HttpClient) {}
 
   getProducts() {
-    return of(this.products);
+    return this.http.get<Product[]>(
+      'https://fakestoreapi.com/products?limit=10'
+    );
   }
 
-  addToCart(product: Product) {
-    return this.http.post<Product>('xxx', product);
+  getProductDetails(productID: number) {
+    return this.http.get<Product>(
+      `https://fakestoreapi.com/products/${productID}`
+    );
+  }
+  addProduct(product: Product) {
+    return this.http.post<Product>(
+      `https://fakestoreapi.com/products`,
+      product
+    );
   }
 }

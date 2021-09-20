@@ -26,10 +26,10 @@ export class AppComponent implements OnInit {
       }
     });
     //apply theme
-    this.isDarkMood = !!localStorage.getItem('darkMood') || false;
+    // this.isDarkMood = !!localStorage.getItem('darkMood') || false;
 
-    const themeClass = this.isDarkMood ? 'theme-dark' : 'theme-light';
+    // const themeClass = this.isDarkMood ? 'theme-dark' : 'theme-light';
 
-    this.document.body.setAttribute('class', themeClass);
+    // this.document.body.setAttribute('class', themeClass);
   }
 }

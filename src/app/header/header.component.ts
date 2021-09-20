@@ -1,4 +1,4 @@
-import { Component, Inject, OnDestroy, OnInit, Renderer2 } from '@angular/core';
+import { Component, Inject, OnInit, Renderer2 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit, OnDestroy {
+export class HeaderComponent implements OnInit {
   total: number = 0;
   totalSubscription!: Subscription;
   isDarkMood: boolean = false;
@@ -23,13 +23,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private rendrer: Renderer2
   ) {}
 
-  ngOnInit(): void {
-    this.totalSubscription = this.productService.totalItemsObservable.subscribe(
-      (res) => {
-        this.total = res;
-      }
-    );
-  }
+  ngOnInit(): void {}
   switchTheme() {
     this.isDarkMood = !this.isDarkMood;
     const themeClass = this.isDarkMood ? 'theme-dark' : 'theme-light';
@@ -46,9 +40,5 @@ export class HeaderComponent implements OnInit, OnDestroy {
         this.document.documentElement.dir = 'ltr';
       }
     });
-  }
-
-  ngOnDestroy() {
-    this.totalSubscription.unsubscribe();
   }
 }

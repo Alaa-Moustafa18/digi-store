@@ -1,12 +1,10 @@
 <mat-toolbar>
   <mat-toolbar-row>
-    <span><a routerLink="/home">Store</a></span>
+    <span><a routerLink="/">Store</a></span>
     <span class="example-spacer"></span>
-    <a class="menu-item" routerLink="/register" routerLinkActive="active">{{
-      "REGISTER" | translate
-    }}</a>
+
     <p>
-      <mat-icon [matBadge]="total" matBadgeColor="warn">shopping_bag</mat-icon>
+      <mat-icon matBadge="0" matBadgeColor="warn">shopping_bag</mat-icon>
     </p>
     <button
       mat-icon-button

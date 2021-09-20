@@ -1,1 +1,14 @@
-<app-header></app-header> <router-outlet></router-outlet>
+<app-header></app-header>
+
+<router-outlet></router-outlet>
+<div class="container">
+  <div class="row flex flex-justify-center">
+    <button mat-raised-button color="primary" routerLink="/products">
+      <span> {{ "PRODUCTS_LIST" | translate }} </span>
+    </button>
+
+    <button mat-raised-button color="primary" routerLink="/addNewProduct">
+      <span> {{ "ADD_PRODUCT" | translate }} </span>
+    </button>
+  </div>
+</div>

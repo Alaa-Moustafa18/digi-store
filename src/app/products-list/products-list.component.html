@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4" *ngFor="let product of products; let i = index">
+      <mat-card class="example-card">
+        <div class="product-img">
+          <img [src]="product.image" [alt]="product.image" />
+          <div class="overlay">
+            <mat-icon aria-hidden="false" aria-label="Example home icon"
+              >add_shopping_cart</mat-icon
+            >
+          </div>
+        </div>
+        <mat-card-content>
+          <div class="row flex flex-justify-between">
+            <p class="product-name">
+              {{ product.title }}
+            </p>
+          </div>
+          <div class="row flex flex-justify-between">
+            <p>
+              {{ product.category }}
+            </p>
+            <p class="product-price">{{ product.price | currency }}</p>
+          </div>
+          <div class="row flex flex-justify-between">
+            <button
+              mat-raised-button
+              color="primary"
+              routerLink="/products/{{ product.id }}"
+            >
+              <span> {{ "VIEW_DETAILS" }} </span>
+            </button>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

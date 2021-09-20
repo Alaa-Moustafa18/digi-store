@@ -1,9 +1,13 @@
 .mat-card {
   padding: 0;
+  height: 520px;
+  margin-bottom: 40px;
   .product-img {
     position: relative;
     transition: all 0.3s ease-in-out;
     overflow: hidden;
+    height: 350px;
+    max-height: 350px;
     .overlay {
       position: absolute;
       background: #000;
@@ -37,18 +41,12 @@
 
   .mat-card-content {
     padding: 16px;
+    .row {
+      margin: 0;
+    }
     .product-name {
       font-weight: 600;
       font-size: 16px;
-      margin-bottom: 0;
-    }
-    .sold {
-      height: 15px;
-      padding: 7px;
-      font-size: 12px;
-      background-color: #ff4e4e;
-      color: #fff;
-      border-radius: 20px;
     }
   }
 }
