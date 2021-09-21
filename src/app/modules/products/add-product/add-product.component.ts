@@ -1,7 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  FormGroupDirective,
+  Validators,
+} from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslateService } from '@ngx-translate/core';
+import { Product } from '../../../models/product';
 import { ProductsService } from '../../../services/product/products.service';
 
 @Component({
@@ -27,11 +33,13 @@ export class AddProductComponent implements OnInit {
       category: this.fb.control('', Validators.required),
     });
   }
-  onSubmit() {
-    const newProduct = this.addProductForm.value;
-    this.productService.addProduct(newProduct);
+  onSubmit(product: Product, formDirective: FormGroupDirective) {
+    this.productService.addProduct(product);
     this.snackBar.open(this.translate.instant('NEW_ITEM_ADDED'), 'dismiss', {
       duration: 2000,
     });
+    this.addProductForm.reset();
+    formDirective.resetForm();
+    console.log('addProductForm', this.addProductForm);
   }
 }

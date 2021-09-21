@@ -1,7 +1,11 @@
 <div class="main-form">
   <mat-card class="form-card">
     <mat-card-content>
-      <form [formGroup]="addProductForm" (ngSubmit)="onSubmit()">
+      <form
+        [formGroup]="addProductForm"
+        #formDirective="ngForm"
+        (ngSubmit)="onSubmit(addProductForm.value, formDirective)"
+      >
         <p>
           <mat-form-field appearance="outline">
             <mat-label> {{ "TITLE" | translate }}</mat-label>
