@@ -23,7 +23,17 @@ const materialComponents = [
   MatMenuModule,
 ];
 @NgModule({
-  imports: [CommonModule, materialComponents],
-  exports: [materialComponents],
+  imports: [CommonModule],
+  exports: [
+    MatToolbarModule,
+    MatIconModule,
+    MatCardModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatBadgeModule,
+    MatSnackBarModule,
+    MatMenuModule,
+  ],
 })
 export class MaterialModule {}

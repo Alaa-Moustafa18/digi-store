@@ -17,6 +17,7 @@ export class ProductDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    // TODO: get data in resolver to make insure we have product and handle error if it is not exist.
     this.productID = this.activatedRoute.snapshot.paramMap.get('id') || '';
     this.productService
       .getProductDetails(+this.productID)

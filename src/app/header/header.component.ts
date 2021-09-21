@@ -1,9 +1,8 @@
 import { Component, Inject, OnInit, Renderer2 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
-import { Subscription } from 'rxjs';
-import { ProductsService } from '../services/product/products.service';
 import { Router } from '@angular/router';
+import { LanguageService } from '../services/language.service';
 
 @Component({
   selector: 'app-header',
@@ -11,14 +10,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  total: number = 0;
-  totalSubscription!: Subscription;
   isDarkMood: boolean = false;
   authenticated: boolean = false;
   constructor(
     public translate: TranslateService,
+    private languageService: LanguageService,
     public router: Router,
-    private productService: ProductsService,
     @Inject(DOCUMENT) private document: Document,
     private rendrer: Renderer2
   ) {}
@@ -28,10 +25,10 @@ export class HeaderComponent implements OnInit {
     this.isDarkMood = !this.isDarkMood;
     const themeClass = this.isDarkMood ? 'theme-dark' : 'theme-light';
     this.rendrer.setAttribute(this.document.body, 'class', themeClass);
-    localStorage.setItem('darkMood', 'true');
+    localStorage.setItem('darkMood', this.isDarkMood.toString());
   }
   changeLanguage(lang: string) {
-    this.translate.use(lang);
+    this.languageService.changeLocale(lang);
     localStorage.setItem('currentLanguage', lang);
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
       if (event.lang === 'ar') {

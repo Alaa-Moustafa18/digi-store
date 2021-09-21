@@ -1,11 +1,10 @@
-<p>add-product works!</p>
 <div class="main-form">
   <mat-card class="form-card">
     <mat-card-content>
       <form [formGroup]="addProductForm" (ngSubmit)="onSubmit()">
         <p>
           <mat-form-field appearance="outline">
-            <mat-label>{{ "title" | translate }}</mat-label>
+            <mat-label> {{ "TITLE" | translate }}</mat-label>
             <input
               formControlName="title"
               matInput
@@ -14,13 +13,14 @@
             />
             <mat-error
               *ngIf="addProductForm.get('title')?.hasError('required')"
-              >{{ "ERROR_MSGS.REQUIRED" | translate }}</mat-error
             >
+              {{ "ERROR_MSGS.REQUIRED" | translate }}
+            </mat-error>
           </mat-form-field>
         </p>
         <p>
           <mat-form-field appearance="outline">
-            <mat-label>{{ "price" | translate }}</mat-label>
+            <mat-label>{{ "PRICE" | translate }}</mat-label>
             <input
               formControlName="price"
               type="number"
