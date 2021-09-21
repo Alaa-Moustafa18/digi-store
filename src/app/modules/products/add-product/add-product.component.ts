@@ -8,6 +8,7 @@ import {
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslateService } from '@ngx-translate/core';
 import { Product } from '../../../models/product';
+import { LanguageService } from '../../../services/language.service';
 import { ProductsService } from '../../../services/product/products.service';
 
 @Component({
@@ -20,11 +21,16 @@ export class AddProductComponent implements OnInit {
     private fb: FormBuilder,
     private productService: ProductsService,
     private snackBar: MatSnackBar,
-    public translate: TranslateService
+    public translate: TranslateService,
+    private languageService: LanguageService
   ) {}
   addProductForm: FormGroup = this.fb.group({});
 
   ngOnInit(): void {
+    this.languageService.localeLang.subscribe((lang) => {
+      this.translate.use(lang);
+    });
+
     this.addProductForm = this.fb.group({
       title: this.fb.control('', Validators.required),
       price: this.fb.control('', Validators.required),

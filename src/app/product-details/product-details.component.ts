@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { Product } from '../models/product';
+import { LanguageService } from '../services/language.service';
 import { ProductsService } from '../services/product/products.service';
 
 @Component({
@@ -13,7 +15,9 @@ export class ProductDetailsComponent implements OnInit {
   product: Product = new Product();
   constructor(
     private activatedRoute: ActivatedRoute,
-    private productService: ProductsService
+    private productService: ProductsService,
+    private languageService: LanguageService,
+    public translate: TranslateService
   ) {}
 
   ngOnInit(): void {
@@ -24,5 +28,8 @@ export class ProductDetailsComponent implements OnInit {
       .subscribe((product) => {
         this.product = product;
       });
+    this.languageService.localeLang.subscribe((lang) => {
+      this.translate.use(lang);
+    });
   }
 }
